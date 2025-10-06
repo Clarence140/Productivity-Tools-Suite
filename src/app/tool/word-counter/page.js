@@ -214,9 +214,9 @@ Try typing or pasting your text here to see instant results!`;
           </div>
 
           {/* Text Input Area */}
-          <div className="p-6">
+          <div className="p-4">
             <label
-              className="block text-sm font-semibold mb-3"
+              className="block text-xs font-semibold mb-2"
               style={{ color: "#282C35" }}
             >
               Enter or Paste Your Text
@@ -224,10 +224,8 @@ Try typing or pasting your text here to see instant results!`;
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
-              placeholder="Start typing or paste your text here...
-
-The counter will automatically update as you type!"
-              className="w-full h-96 px-4 py-3 border-2 rounded-xl outline-none transition-all text-base leading-relaxed resize-none"
+              placeholder="Start typing... (counts update in real-time)"
+              className="w-full h-56 px-3 py-2 border-2 rounded-lg outline-none transition-all text-sm leading-relaxed resize-none"
               style={{
                 backgroundColor: "#FFFFFF",
                 borderColor: "#EFEFEF",
@@ -238,312 +236,132 @@ The counter will automatically update as you type!"
           </div>
 
           {/* Statistics Display */}
-          <div className="px-6 pb-6">
-            <h3 className="text-lg font-bold mb-4" style={{ color: "#282C35" }}>
-              📊 Text Statistics
+          <div className="px-4 pb-4">
+            <h3 className="text-xs font-bold mb-2" style={{ color: "#282C35" }}>
+              📊 Statistics
             </h3>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              {/* Word Count */}
+            {/* Compact Stats Grid */}
+            <div className="grid grid-cols-3 md:grid-cols-7 gap-2 mb-3">
               <div
-                className="p-6 rounded-xl border-2"
+                className="p-2 rounded text-center"
                 style={{
                   backgroundColor: "rgba(0, 119, 182, 0.05)",
-                  borderColor: "rgba(0, 119, 182, 0.2)",
+                  border: "1px solid rgba(0, 119, 182, 0.2)",
                 }}
               >
-                <div
-                  className="text-3xl font-bold mb-1"
-                  style={{ color: "#0077B6" }}
-                >
+                <div className="text-lg font-bold" style={{ color: "#0077B6" }}>
                   {stats.words.toLocaleString()}
                 </div>
-                <div
-                  className="text-sm font-semibold"
-                  style={{ color: "#282C35" }}
-                >
+                <div className="text-xs" style={{ color: "#282C35" }}>
                   Words
                 </div>
               </div>
 
-              {/* Characters with spaces */}
               <div
-                className="p-6 rounded-xl border-2"
+                className="p-2 rounded text-center"
                 style={{
                   backgroundColor: "rgba(0, 119, 182, 0.05)",
-                  borderColor: "rgba(0, 119, 182, 0.2)",
+                  border: "1px solid rgba(0, 119, 182, 0.2)",
                 }}
               >
-                <div
-                  className="text-3xl font-bold mb-1"
-                  style={{ color: "#0077B6" }}
-                >
+                <div className="text-lg font-bold" style={{ color: "#0077B6" }}>
                   {stats.charactersWithSpaces.toLocaleString()}
                 </div>
-                <div
-                  className="text-sm font-semibold"
-                  style={{ color: "#282C35" }}
-                >
-                  Characters (with spaces)
+                <div className="text-xs" style={{ color: "#282C35" }}>
+                  Chars
                 </div>
               </div>
 
-              {/* Characters without spaces */}
               <div
-                className="p-6 rounded-xl border-2"
+                className="p-2 rounded text-center"
                 style={{
                   backgroundColor: "rgba(0, 119, 182, 0.05)",
-                  borderColor: "rgba(0, 119, 182, 0.2)",
+                  border: "1px solid rgba(0, 119, 182, 0.2)",
                 }}
               >
-                <div
-                  className="text-3xl font-bold mb-1"
-                  style={{ color: "#0077B6" }}
-                >
+                <div className="text-lg font-bold" style={{ color: "#0077B6" }}>
                   {stats.charactersNoSpaces.toLocaleString()}
                 </div>
-                <div
-                  className="text-sm font-semibold"
-                  style={{ color: "#282C35" }}
-                >
-                  Characters (no spaces)
+                <div className="text-xs" style={{ color: "#282C35" }}>
+                  No Spc
                 </div>
               </div>
 
-              {/* Sentences */}
               <div
-                className="p-6 rounded-xl border-2"
+                className="p-2 rounded text-center"
                 style={{
                   backgroundColor: "rgba(0, 119, 182, 0.05)",
-                  borderColor: "rgba(0, 119, 182, 0.2)",
+                  border: "1px solid rgba(0, 119, 182, 0.2)",
                 }}
               >
-                <div
-                  className="text-3xl font-bold mb-1"
-                  style={{ color: "#0077B6" }}
-                >
+                <div className="text-lg font-bold" style={{ color: "#0077B6" }}>
                   {stats.sentences.toLocaleString()}
                 </div>
-                <div
-                  className="text-sm font-semibold"
-                  style={{ color: "#282C35" }}
-                >
-                  Sentences
+                <div className="text-xs" style={{ color: "#282C35" }}>
+                  Sent.
                 </div>
               </div>
 
-              {/* Lines */}
               <div
-                className="p-6 rounded-xl border-2"
+                className="p-2 rounded text-center"
                 style={{
                   backgroundColor: "rgba(0, 119, 182, 0.05)",
-                  borderColor: "rgba(0, 119, 182, 0.2)",
+                  border: "1px solid rgba(0, 119, 182, 0.2)",
                 }}
               >
-                <div
-                  className="text-3xl font-bold mb-1"
-                  style={{ color: "#0077B6" }}
-                >
+                <div className="text-lg font-bold" style={{ color: "#0077B6" }}>
                   {stats.lines.toLocaleString()}
                 </div>
-                <div
-                  className="text-sm font-semibold"
-                  style={{ color: "#282C35" }}
-                >
+                <div className="text-xs" style={{ color: "#282C35" }}>
                   Lines
                 </div>
               </div>
 
-              {/* Paragraphs */}
               <div
-                className="p-6 rounded-xl border-2"
+                className="p-2 rounded text-center"
                 style={{
                   backgroundColor: "rgba(0, 119, 182, 0.05)",
-                  borderColor: "rgba(0, 119, 182, 0.2)",
+                  border: "1px solid rgba(0, 119, 182, 0.2)",
                 }}
               >
-                <div
-                  className="text-3xl font-bold mb-1"
-                  style={{ color: "#0077B6" }}
-                >
+                <div className="text-lg font-bold" style={{ color: "#0077B6" }}>
                   {stats.paragraphs.toLocaleString()}
                 </div>
-                <div
-                  className="text-sm font-semibold"
-                  style={{ color: "#282C35" }}
-                >
-                  Paragraphs
+                <div className="text-xs" style={{ color: "#282C35" }}>
+                  Para.
                 </div>
               </div>
 
-              {/* Reading Time */}
               <div
-                className="p-6 rounded-xl border-2 md:col-span-2"
+                className="p-2 rounded text-center"
                 style={{
                   backgroundColor: "rgba(0, 119, 182, 0.05)",
-                  borderColor: "rgba(0, 119, 182, 0.2)",
+                  border: "1px solid rgba(0, 119, 182, 0.2)",
                 }}
               >
-                <div
-                  className="text-3xl font-bold mb-1"
-                  style={{ color: "#0077B6" }}
-                >
-                  {stats.readingTime} min
+                <div className="text-lg font-bold" style={{ color: "#0077B6" }}>
+                  {stats.readingTime}m
                 </div>
-                <div
-                  className="text-sm font-semibold"
-                  style={{ color: "#282C35" }}
-                >
-                  Estimated Reading Time
-                </div>
-                <div className="text-xs mt-1" style={{ color: "#3a3f4b" }}>
-                  Based on 200 words/minute
+                <div className="text-xs" style={{ color: "#282C35" }}>
+                  Read
                 </div>
               </div>
             </div>
 
-            {/* Formatted Output */}
+            {/* Compact Info */}
             <div
-              className="rounded-xl p-6 border-2"
+              className="p-2 rounded text-xs"
               style={{
-                backgroundColor: "#EFEFEF",
-                borderColor: "#d4d4d4",
+                backgroundColor: "rgba(0, 119, 182, 0.05)",
+                borderLeft: "3px solid #0077B6",
+                color: "#3a3f4b",
               }}
             >
-              <h4
-                className="font-bold mb-3 flex items-center gap-2"
-                style={{ color: "#282C35" }}
-              >
-                <span>📄</span> Formatted Statistics Output
-              </h4>
-              <div
-                className="font-mono text-sm space-y-1"
-                style={{ color: "#282C35" }}
-              >
-                <div>
-                  <strong>Word Count:</strong> {stats.words}
-                </div>
-                <div>
-                  <strong>Character Count (with spaces):</strong>{" "}
-                  {stats.charactersWithSpaces}
-                </div>
-                <div>
-                  <strong>Character Count (no spaces):</strong>{" "}
-                  {stats.charactersNoSpaces}
-                </div>
-                <div>
-                  <strong>Sentence Count:</strong> {stats.sentences}
-                </div>
-                <div>
-                  <strong>Line Count:</strong> {stats.lines}
-                </div>
-                <div>
-                  <strong>Paragraph Count:</strong> {stats.paragraphs}
-                </div>
-                <div>
-                  <strong>Estimated Reading Time:</strong> {stats.readingTime}{" "}
-                  minute{stats.readingTime !== 1 ? "s" : ""}
-                </div>
-              </div>
+              Real-time analysis • Reading time based on 200 wpm • Copy stats
+              above
             </div>
           </div>
-        </motion.div>
-
-        {/* Features Section */}
-        <motion.div
-          className="mt-12 grid md:grid-cols-3 gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">⚡</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Real-Time Analysis
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Statistics update instantly as you type - no need to click any
-              buttons
-            </p>
-          </div>
-
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">🎯</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Accurate Counting
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Precise word, character, sentence, and line counting with proper
-              text parsing
-            </p>
-          </div>
-
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">📊</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Comprehensive Stats
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Get complete text analytics including reading time estimates and
-              paragraph counts
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Use Cases */}
-        <motion.div
-          className="mt-8 p-6 rounded-xl border"
-          style={{
-            backgroundColor: "#FFFFFF",
-            borderColor: "#0077B6",
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-        >
-          <h4 className="font-bold mb-2" style={{ color: "#0077B6" }}>
-            💡 Perfect For:
-          </h4>
-          <ul className="text-sm space-y-1" style={{ color: "#3a3f4b" }}>
-            <li>
-              • <strong>Writers:</strong> Meet word count requirements for
-              articles and essays
-            </li>
-            <li>
-              • <strong>Students:</strong> Check assignment length and essay
-              word counts
-            </li>
-            <li>
-              • <strong>Bloggers:</strong> Optimize content length for SEO
-            </li>
-            <li>
-              • <strong>Social Media:</strong> Stay within character limits for
-              posts
-            </li>
-            <li>
-              • <strong>Editors:</strong> Analyze document structure and
-              readability
-            </li>
-          </ul>
         </motion.div>
 
         {/* Confirmation Modal */}

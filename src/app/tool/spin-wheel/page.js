@@ -456,11 +456,11 @@ Hannah`;
             </div>
 
             {/* Input Area */}
-            <div className="p-6">
+            <div className="p-4">
               {/* Custom Title Input */}
-              <div className="mb-4">
+              <div className="mb-3">
                 <label
-                  className="block text-sm font-semibold mb-2"
+                  className="block text-xs font-semibold mb-1"
                   style={{ color: "#282C35" }}
                 >
                   🏆 Winner Title (Optional)
@@ -469,26 +469,22 @@ Hannah`;
                   type="text"
                   value={customTitle}
                   onChange={(e) => setCustomTitle(e.target.value)}
-                  placeholder="e.g., Siya ang magbabayad, The winner is, Presenter"
-                  className="w-full px-4 py-3 border-2 rounded-xl outline-none transition-all"
+                  placeholder="e.g., Siya ang magbabayad"
+                  className="w-full px-3 py-2 border-2 rounded-lg outline-none transition-all text-sm"
                   style={{
                     backgroundColor: "#FFFFFF",
                     borderColor: "#EFEFEF",
                     color: "#282C35",
                   }}
                 />
-                <p className="mt-1 text-xs" style={{ color: "#3a3f4b" }}>
-                  This text will replace "WINNER!" - e.g., "Siya ang magbabayad"
-                  will show: <strong>"🎉 Siya ang magbabayad: [Name]"</strong>
-                </p>
               </div>
 
               {/* Options Input */}
               <label
-                className="block text-sm font-semibold mb-3"
+                className="block text-xs font-semibold mb-1"
                 style={{ color: "#282C35" }}
               >
-                Enter Options (One per line)
+                Options (One per line)
               </label>
               <textarea
                 value={options}
@@ -496,22 +492,17 @@ Hannah`;
                 placeholder="Alice
 Bob
 Charlie
-Diana
-Edward
-Fiona
-
-Add one name per line..."
-                className="w-full h-96 px-4 py-3 border-2 rounded-xl outline-none transition-all text-base resize-none"
+Diana"
+                className="w-full h-56 px-3 py-2 border-2 rounded-lg outline-none transition-all text-sm resize-none"
                 style={{
                   backgroundColor: "#FFFFFF",
                   borderColor: "#EFEFEF",
                   color: "#282C35",
                 }}
               />
-              <p className="mt-2 text-sm" style={{ color: "#3a3f4b" }}>
+              <p className="mt-1 text-xs" style={{ color: "#3a3f4b" }}>
                 {optionsList.length}{" "}
-                {optionsList.length === 1 ? "option" : "options"} • Auto-saved •
-                Aalisin ang nanalo pagkatapos
+                {optionsList.length === 1 ? "option" : "options"} • Auto-saved
               </p>
             </div>
           </motion.div>
@@ -527,66 +518,43 @@ Add one name per line..."
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="p-6">
-              <h3
-                className="text-lg font-bold mb-2 text-center"
-                style={{ color: "#282C35" }}
-              >
-                🎡 The Wheel
-              </h3>
+            <div className="p-4">
               <p
-                className="text-xs text-center mb-6"
+                className="text-xs text-center mb-3"
                 style={{ color: "#3a3f4b" }}
               >
-                ⬇️ Kung saan tumama ang{" "}
-                <span style={{ color: "#FFD700", fontWeight: "bold" }}>
-                  ● gold tip
-                </span>{" "}
-                sa kulay, yun ang winner!
+                ⬇️ Gold tip = winner
               </p>
 
               {/* Canvas Wheel */}
-              <div className="flex flex-col items-center mb-6">
+              <div className="flex flex-col items-center mb-3">
                 <canvas
                   ref={canvasRef}
-                  width={400}
-                  height={400}
+                  width={350}
+                  height={350}
                   className="max-w-full"
                 />
 
                 {/* Current Selection Indicator */}
                 {optionsList.length > 0 && !isSpinning && (
-                  <div className="mt-4 text-center">
-                    <p
-                      className="text-xs font-semibold mb-1"
-                      style={{ color: "#3a3f4b" }}
-                    >
-                      ⬇️ Kasalukuyang tumuturo sa:
-                    </p>
+                  <div className="mt-2 text-center w-full">
                     <div
-                      className="px-6 py-3 rounded-xl border-2"
+                      className="px-3 py-2 rounded-lg text-xs font-bold"
                       style={{
                         backgroundColor: "rgba(0, 119, 182, 0.05)",
-                        borderColor: "#0077B6",
+                        border: "1px solid #0077B6",
+                        color: "#0077B6",
                       }}
                     >
-                      <p
-                        className="font-bold text-lg"
-                        style={{ color: "#0077B6" }}
-                      >
-                        {(() => {
-                          // Simple and accurate: which slice is currently under the arrow
-                          const anglePerSlice = 360 / optionsList.length;
-                          const normalizedRotation = rotation % 360;
-
-                          // Direct calculation: rotation tells us which slice is at top
-                          const currentIndex =
-                            Math.floor(normalizedRotation / anglePerSlice) %
-                            optionsList.length;
-
-                          return optionsList[currentIndex] || "Ready to spin!";
-                        })()}
-                      </p>
+                      ⬇️{" "}
+                      {(() => {
+                        const anglePerSlice = 360 / optionsList.length;
+                        const normalizedRotation = rotation % 360;
+                        const currentIndex =
+                          Math.floor(normalizedRotation / anglePerSlice) %
+                          optionsList.length;
+                        return optionsList[currentIndex] || "Ready!";
+                      })()}
                     </div>
                   </div>
                 )}
@@ -596,7 +564,7 @@ Add one name per line..."
               <button
                 onClick={spinWheel}
                 disabled={isSpinning || optionsList.length === 0}
-                className="w-full py-6 text-white font-black text-2xl rounded-xl transition-all duration-200 hover:shadow-2xl hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full py-4 text-white font-black text-lg rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:hover:scale-100"
                 style={{
                   backgroundColor:
                     isSpinning || optionsList.length === 0
@@ -604,142 +572,20 @@ Add one name per line..."
                       : "#0077B6",
                 }}
               >
-                {isSpinning ? (
-                  <span className="flex items-center justify-center gap-3">
-                    <svg className="animate-spin h-8 w-8" viewBox="0 0 24 24">
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                        fill="none"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      />
-                    </svg>
-                    SPINNING...
-                  </span>
-                ) : (
-                  "🎯 SPIN THE WHEEL!"
-                )}
+                {isSpinning ? "⏳ SPINNING..." : "🎯 SPIN!"}
               </button>
 
               {optionsList.length === 0 && (
                 <p
-                  className="text-center text-sm mt-4"
+                  className="text-center text-xs mt-2"
                   style={{ color: "#3a3f4b" }}
                 >
-                  Add at least one option to enable spinning
+                  Add options to enable
                 </p>
               )}
             </div>
           </motion.div>
         </div>
-
-        {/* Features Section */}
-        <motion.div
-          className="mt-12 grid md:grid-cols-3 gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">🎲</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              100% Random
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              True randomization - winner is selected before animation starts
-              for complete fairness
-            </p>
-          </div>
-
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">🗑️</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Auto-Remove Winners
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Selected winners are automatically removed from the list after
-              each spin - perfect for elimination games!
-            </p>
-          </div>
-
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">🎨</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Visual & Fun
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Engaging wheel animation with smooth spinning and exciting reveal
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Use Cases */}
-        <motion.div
-          className="mt-8 p-6 rounded-xl border"
-          style={{
-            backgroundColor: "#FFFFFF",
-            borderColor: "#0077B6",
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-        >
-          <h4 className="font-bold mb-2" style={{ color: "#0077B6" }}>
-            💡 Perfect For:
-          </h4>
-          <ul className="text-sm space-y-1" style={{ color: "#3a3f4b" }}>
-            <li>
-              • <strong>Team Meetings:</strong> "Siya ang mag-present" - Pick
-              who presents first
-            </li>
-            <li>
-              • <strong>Giveaways:</strong> "The winner is" - Fairly select
-              prize winners
-            </li>
-            <li>
-              • <strong>Decision Making:</strong> "Siya ang magbabayad" - Who
-              pays for lunch?
-            </li>
-            <li>
-              • <strong>Games:</strong> "Next player" - Random turn order
-              selection
-            </li>
-            <li>
-              • <strong>Classroom:</strong> "Mag-answer" - Pick students for
-              questions
-            </li>
-            <li>
-              • <strong>Custom Titles:</strong> Set your own message for any
-              occasion!
-            </li>
-          </ul>
-        </motion.div>
 
         {/* Winner Modal */}
         <AnimatePresence>

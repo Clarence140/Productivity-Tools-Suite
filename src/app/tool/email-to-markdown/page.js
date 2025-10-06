@@ -252,30 +252,25 @@ Get Outlook for iOS`;
           </div>
 
           {/* Editor Area */}
-          <div className="grid lg:grid-cols-2 gap-6 p-6">
+          <div className="grid lg:grid-cols-2 gap-4 p-4">
             {/* Email Input */}
             <div>
-              <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center justify-between mb-2">
                 <label
-                  className="block text-sm font-semibold"
+                  className="block text-xs font-semibold"
                   style={{ color: "#282C35" }}
                 >
-                  📧 Email Content (Paste Here)
+                  📧 Email Content
                 </label>
                 <span className="text-xs" style={{ color: "#3a3f4b" }}>
-                  {emailText.length} characters
+                  {emailText.length} chars
                 </span>
               </div>
               <textarea
                 value={emailText}
                 onChange={(e) => setEmailText(e.target.value)}
-                placeholder="Paste your messy email content here...
-
-• HTML tags will be cleaned
-• Line breaks will be normalized
-• Lists will be formatted
-• Email headers will be structured"
-                className="w-full h-[500px] px-4 py-3 border-2 rounded-xl outline-none transition-all font-mono text-sm resize-none"
+                placeholder="Paste messy email here... (HTML tags, line breaks, etc. will be cleaned)"
+                className="w-full h-64 px-3 py-2 border-2 rounded-lg outline-none transition-all font-mono text-xs resize-none"
                 style={{
                   backgroundColor: "#FFFFFF",
                   borderColor: "#EFEFEF",
@@ -287,9 +282,9 @@ Get Outlook for iOS`;
 
             {/* Markdown Output */}
             <div>
-              <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center justify-between mb-2">
                 <label
-                  className="block text-sm font-semibold"
+                  className="block text-xs font-semibold"
                   style={{ color: "#282C35" }}
                 >
                   📝 Markdown Output
@@ -298,7 +293,7 @@ Get Outlook for iOS`;
                   <button
                     onClick={handleCopyMarkdown}
                     disabled={!markdownText}
-                    className="px-3 py-1 text-white text-xs rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-2 py-1 text-white text-xs rounded font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105"
                     style={{
                       backgroundColor: "#0077B6",
                     }}
@@ -308,7 +303,7 @@ Get Outlook for iOS`;
                   <button
                     onClick={handleDownloadMarkdown}
                     disabled={!markdownText}
-                    className="px-3 py-1 text-white text-xs rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-2 py-1 text-white text-xs rounded font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105"
                     style={{
                       backgroundColor: "#0077B6",
                     }}
@@ -320,14 +315,8 @@ Get Outlook for iOS`;
               <textarea
                 value={markdownText}
                 readOnly
-                placeholder="Clean Markdown will appear here...
-
-The formatter will:
-✓ Remove HTML tags
-✓ Clean up formatting
-✓ Convert lists
-✓ Structure headers"
-                className="w-full h-[500px] px-4 py-3 border-2 rounded-xl outline-none font-mono text-sm resize-none"
+                placeholder="Clean Markdown output..."
+                className="w-full h-64 px-3 py-2 border-2 rounded-lg outline-none font-mono text-xs resize-none"
                 style={{
                   backgroundColor: "#EFEFEF",
                   borderColor: "#d4d4d4",
@@ -336,146 +325,19 @@ The formatter will:
               />
             </div>
           </div>
-        </motion.div>
 
-        {/* Features Section */}
-        <motion.div
-          className="mt-12 grid md:grid-cols-4 gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">🧹</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Clean HTML
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Removes HTML tags, entities, and styling remnants automatically
-            </p>
-          </div>
-
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">📋</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Smart Lists
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Converts bullet points and numbered lists to proper Markdown
-              syntax
-            </p>
-          </div>
-
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">💬</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Quote Handling
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Identifies and formats email replies and quoted text properly
-            </p>
-          </div>
-
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">⚡</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Instant Preview
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Real-time conversion as you type or paste content
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Use Cases */}
-        <motion.div
-          className="mt-8 p-6 rounded-xl border"
-          style={{
-            backgroundColor: "#FFFFFF",
-            borderColor: "#0077B6",
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-        >
-          <h4 className="font-bold mb-4 text-lg" style={{ color: "#0077B6" }}>
-            💼 Perfect For:
-          </h4>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <h5 className="font-semibold mb-2" style={{ color: "#282C35" }}>
-                Engineers & Developers:
-              </h5>
-              <ul className="text-sm space-y-1" style={{ color: "#3a3f4b" }}>
-                <li>• Convert specs from email to GitHub issues</li>
-                <li>• Clean up bug reports for Jira/Linear</li>
-                <li>• Format technical requirements for documentation</li>
-                <li>• Prepare code review comments</li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="font-semibold mb-2" style={{ color: "#282C35" }}>
-                Product Managers & Teams:
-              </h5>
-              <ul className="text-sm space-y-1" style={{ color: "#3a3f4b" }}>
-                <li>• Convert meeting notes to Confluence pages</li>
-                <li>• Format user feedback for documentation</li>
-                <li>• Create structured release notes</li>
-                <li>• Prepare stakeholder updates</li>
-              </ul>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Benefits */}
-        <motion.div
-          className="mt-8 p-6 rounded-xl"
-          style={{
-            backgroundColor: "#0077B6",
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-        >
-          <h4 className="font-bold text-white mb-3">
-            ⏱️ Time-Saving Benefits:
-          </h4>
-          <div className="grid md:grid-cols-3 gap-4 text-white/90 text-sm">
-            <div>
-              <strong className="text-white">Eliminate Manual Cleanup:</strong>{" "}
-              No more copying, pasting, and reformatting line by line
-            </div>
-            <div>
-              <strong className="text-white">Consistent Documentation:</strong>{" "}
-              All email content becomes instantly production-ready
-            </div>
-            <div>
-              <strong className="text-white">Faster Workflows:</strong> Save
-              hours per week on documentation tasks
+          {/* Compact Info Banner */}
+          <div className="px-4 pb-4">
+            <div
+              className="p-3 rounded-lg text-xs"
+              style={{
+                backgroundColor: "rgba(0, 119, 182, 0.05)",
+                borderLeft: "3px solid #0077B6",
+                color: "#3a3f4b",
+              }}
+            >
+              <strong>Features:</strong> Cleans HTML • Formats lists •
+              Structures headers • Real-time conversion
             </div>
           </div>
         </motion.div>

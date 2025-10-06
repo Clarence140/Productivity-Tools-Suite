@@ -272,11 +272,11 @@ export default function ImageToTextExtractor() {
           </div>
 
           {/* Preview and Results Section */}
-          <div className="grid md:grid-cols-2 gap-6 p-6">
+          <div className="grid md:grid-cols-2 gap-4 p-4">
             {/* Image Preview */}
             <div>
               <label
-                className="block text-sm font-semibold mb-3"
+                className="block text-xs font-semibold mb-2"
                 style={{ color: "#282C35" }}
               >
                 Image Preview
@@ -286,7 +286,7 @@ export default function ImageToTextExtractor() {
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
-                className={`border-2 border-dashed rounded-xl p-4 min-h-[300px] flex items-center justify-center transition-all duration-200 ${
+                className={`border-2 border-dashed rounded-lg p-3 h-56 flex items-center justify-center transition-all duration-200 ${
                   isDragging ? "scale-105" : ""
                 }`}
                 style={{
@@ -300,12 +300,15 @@ export default function ImageToTextExtractor() {
                   <img
                     src={imagePreview}
                     alt="Preview"
-                    className="max-w-full max-h-[400px] object-contain rounded-lg"
+                    className="max-w-full max-h-full object-contain rounded"
                   />
                 ) : (
-                  <div className="text-center" style={{ color: "#3a3f4b" }}>
+                  <div
+                    className="text-center text-xs"
+                    style={{ color: "#3a3f4b" }}
+                  >
                     <svg
-                      className={`w-16 h-16 mx-auto mb-3 transition-all ${
+                      className={`w-10 h-10 mx-auto mb-2 transition-all ${
                         isDragging ? "scale-110" : ""
                       }`}
                       fill="none"
@@ -319,17 +322,9 @@ export default function ImageToTextExtractor() {
                         d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                       />
                     </svg>
-                    <p
-                      className={isDragging ? "font-semibold" : ""}
-                      style={{ color: isDragging ? "#0077B6" : "#3a3f4b" }}
-                    >
-                      {isDragging ? "Drop image here!" : "No image uploaded"}
+                    <p style={{ color: isDragging ? "#0077B6" : "#3a3f4b" }}>
+                      {isDragging ? "Drop here!" : "Drag & drop or upload"}
                     </p>
-                    {!isDragging && (
-                      <p className="text-xs mt-2" style={{ color: "#3a3f4b" }}>
-                        Drag & drop an image here
-                      </p>
-                    )}
                   </div>
                 )}
               </div>
@@ -338,7 +333,7 @@ export default function ImageToTextExtractor() {
             {/* Extracted Text */}
             <div>
               <label
-                className="block text-sm font-semibold mb-3"
+                className="block text-xs font-semibold mb-2"
                 style={{ color: "#282C35" }}
               >
                 Extracted Text
@@ -346,98 +341,65 @@ export default function ImageToTextExtractor() {
               <textarea
                 value={extractedText}
                 onChange={(e) => setExtractedText(e.target.value)}
-                placeholder="Extracted text will appear here..."
-                className="w-full h-[300px] px-4 py-3 border-2 rounded-xl outline-none transition-all font-mono text-sm resize-none"
+                placeholder="Extracted text appears here..."
+                className="w-full h-56 px-3 py-2 border-2 rounded-lg outline-none transition-all font-mono text-xs resize-none"
                 style={{
                   backgroundColor: "#EFEFEF",
                   borderColor: "#d4d4d4",
                   color: "#282C35",
                 }}
               />
-              <div className="flex gap-2 mt-3">
-                <button
-                  onClick={handleCopyText}
-                  disabled={!extractedText}
-                  className="flex-1 px-4 py-2 text-white rounded-lg font-medium transition-all duration-200 disabled:cursor-not-allowed"
-                  style={{
-                    backgroundColor: !extractedText ? "#d4d4d4" : "#0077B6",
-                  }}
-                >
-                  📋 Copy
-                </button>
-                <button
-                  onClick={handleDownloadText}
-                  disabled={!extractedText}
-                  className="flex-1 px-4 py-2 text-white rounded-lg font-medium transition-all duration-200 disabled:cursor-not-allowed"
-                  style={{
-                    backgroundColor: !extractedText ? "#d4d4d4" : "#0077B6",
-                  }}
-                >
-                  💾 Download
-                </button>
-              </div>
             </div>
           </div>
 
+          {/* Action Buttons */}
+          <div className="px-4 pb-4 flex gap-2">
+            <button
+              onClick={handleCopyText}
+              disabled={!extractedText}
+              className="flex-1 px-3 py-2 text-white text-xs rounded font-medium transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
+              style={{
+                backgroundColor: !extractedText ? "#d4d4d4" : "#0077B6",
+              }}
+            >
+              📋 Copy
+            </button>
+            <button
+              onClick={handleDownloadText}
+              disabled={!extractedText}
+              className="flex-1 px-3 py-2 text-white text-xs rounded font-medium transition-all duration-200 disabled:cursor-not-allowed hover:scale-105"
+              style={{
+                backgroundColor: !extractedText ? "#d4d4d4" : "#0077B6",
+              }}
+            >
+              💾 Download
+            </button>
+          </div>
+
           {/* Extract Button */}
-          <div className="px-6 pb-6">
+          <div className="px-4 pb-4">
             <button
               onClick={handleExtractText}
               disabled={!image || isProcessing}
-              className="w-full py-4 text-white font-bold text-lg rounded-xl transition-all duration-200 hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
+              className="w-full py-3 text-white font-bold text-sm rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:hover:scale-100"
               style={{
                 backgroundColor: !image || isProcessing ? "#d4d4d4" : "#0077B6",
               }}
             >
-              {isProcessing ? (
-                <span className="flex items-center justify-center gap-3">
-                  <svg className="animate-spin h-6 w-6" viewBox="0 0 24 24">
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                      fill="none"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    />
-                  </svg>
-                  Extracting Text... {progress}%
-                </span>
-              ) : (
-                <span className="flex items-center justify-center gap-2">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                  Extract Text from Image
-                </span>
-              )}
+              {isProcessing
+                ? `⏳ Extracting... ${progress}%`
+                : "🚀 Extract Text"}
             </button>
 
             {/* Progress Bar */}
             {isProcessing && (
-              <div className="mt-4">
+              <div className="mt-2">
                 <div
-                  className="w-full rounded-full h-2"
+                  className="w-full rounded-full h-1.5"
                   style={{ backgroundColor: "#EFEFEF" }}
                 >
                   <div
-                    className="h-2 rounded-full transition-all duration-300"
+                    className="h-1.5 rounded-full transition-all duration-300"
                     style={{
                       width: `${progress}%`,
                       backgroundColor: "#0077B6",
@@ -450,111 +412,30 @@ export default function ImageToTextExtractor() {
             {/* Error Message */}
             {error && (
               <div
-                className="mt-4 p-4 border-l-4 rounded-lg"
+                className="mt-2 p-2 rounded text-xs"
                 style={{
                   backgroundColor: "#fff5f5",
-                  borderColor: "#e53e3e",
+                  borderLeft: "3px solid #e53e3e",
+                  color: "#c53030",
                 }}
               >
-                <div className="flex items-center gap-3">
-                  <svg className="w-5 h-5" fill="#e53e3e" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <p className="font-medium" style={{ color: "#c53030" }}>
-                    {error}
-                  </p>
-                </div>
+                ⚠️ {error}
               </div>
             )}
-          </div>
-        </motion.div>
 
-        {/* Features Section */}
-        <motion.div
-          className="mt-12 grid md:grid-cols-3 gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">🚀</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Client-Side Processing
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              100% free! All processing happens in your browser using
-              Tesseract.js - no server costs, no data upload
-            </p>
+            {/* Compact Info */}
+            <div
+              className="mt-3 p-2 rounded text-xs"
+              style={{
+                backgroundColor: "rgba(0, 119, 182, 0.05)",
+                borderLeft: "3px solid #0077B6",
+                color: "#3a3f4b",
+              }}
+            >
+              <strong>Tip:</strong> Use clear, high-contrast images • Supports
+              100+ languages • Processing in browser
+            </div>
           </div>
-
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">🌍</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Multi-Language Support
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Tesseract supports 100+ languages including English, Spanish,
-              Chinese, Arabic, and more
-            </p>
-          </div>
-
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">✏️</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Editable Output
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Edit extracted text directly, copy to clipboard, or download as a
-              text file
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Tips Section */}
-        <motion.div
-          className="mt-8 p-6 rounded-xl border"
-          style={{
-            backgroundColor: "#FFFFFF",
-            borderColor: "#0077B6",
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-        >
-          <h4 className="font-bold mb-2" style={{ color: "#0077B6" }}>
-            💡 Tips for Best Results:
-          </h4>
-          <ul className="text-sm space-y-1" style={{ color: "#3a3f4b" }}>
-            <li>• Use high-resolution images with clear, readable text</li>
-            <li>• Ensure good contrast between text and background</li>
-            <li>• Avoid skewed or rotated images when possible</li>
-            <li>
-              • For best accuracy, use images with horizontal text alignment
-            </li>
-            <li>• Supported formats: JPG, PNG, GIF, BMP, and TIFF</li>
-          </ul>
         </motion.div>
 
         {/* Confirmation Modal */}
