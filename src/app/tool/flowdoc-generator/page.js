@@ -229,50 +229,20 @@ END: Registration Process Complete`;
           </p>
         </motion.div>
 
-        {/* Syntax Guide */}
+        {/* Compact Syntax Guide */}
         <motion.div
-          className="mb-8 p-6 rounded-xl border"
+          className="mb-4 p-3 rounded-lg text-xs"
           style={{
-            backgroundColor: "#FFFFFF",
-            borderColor: "#0077B6",
+            backgroundColor: "rgba(0, 119, 182, 0.05)",
+            borderLeft: "3px solid #0077B6",
+            color: "#3a3f4b",
           }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <h3 className="font-bold text-lg mb-4" style={{ color: "#0077B6" }}>
-            📝 Syntax Rules (100% Rule-Based for Accuracy)
-          </h3>
-          <div
-            className="grid md:grid-cols-2 gap-4 text-sm"
-            style={{ color: "#3a3f4b" }}
-          >
-            <div>
-              <p>
-                <strong>START:</strong> Begin process
-              </p>
-              <p>
-                <strong>STEP:</strong> Process action
-              </p>
-              <p>
-                <strong>IF:</strong> Decision point
-              </p>
-            </div>
-            <div>
-              <p>
-                <strong>YES:</strong> Decision branch (indent with 2 spaces)
-              </p>
-              <p>
-                <strong>NO:</strong> Decision branch (indent with 2 spaces)
-              </p>
-              <p>
-                <strong>GO TO:</strong> Jump to existing step
-              </p>
-              <p>
-                <strong>END:</strong> End process
-              </p>
-            </div>
-          </div>
+          <strong>Syntax:</strong> START: • STEP: • IF: (YES:/NO: indented 2
+          spaces) • GO TO: • END:
         </motion.div>
 
         {/* Main Content */}
@@ -325,24 +295,23 @@ END: Registration Process Complete`;
             </div>
 
             {/* Input Area */}
-            <div className="p-6">
+            <div className="p-4">
               <label
-                className="block text-sm font-semibold mb-3"
+                className="block text-xs font-semibold mb-2"
                 style={{ color: "#282C35" }}
               >
-                Structured Documentation (Follow the syntax rules above)
+                Structured Documentation
               </label>
               <textarea
                 value={documentation}
                 onChange={(e) => setDocumentation(e.target.value)}
-                placeholder={`START: Begin your process
-STEP: First action to take
-IF: Decision point?
-  YES: STEP: Action if yes
-  NO: STEP: Action if no
-STEP: Continue process
-END: Process completed`}
-                className="w-full h-96 px-4 py-3 border-2 rounded-xl outline-none transition-all text-sm resize-none font-mono"
+                placeholder={`START: Begin process
+STEP: First action
+IF: Decision?
+  YES: STEP: If yes
+  NO: STEP: If no
+END: Done`}
+                className="w-full h-56 px-3 py-2 border-2 rounded-lg outline-none transition-all text-xs resize-none font-mono"
                 style={{
                   backgroundColor: "#FFFFFF",
                   borderColor: "#EFEFEF",
@@ -356,7 +325,7 @@ END: Process completed`}
                 disabled={
                   isGenerating || !documentation.trim() || !mermaidLoaded
                 }
-                className="w-full mt-4 py-4 text-white font-bold text-lg rounded-xl transition-all duration-200 hover:shadow-2xl hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full mt-3 py-3 text-white font-bold text-sm rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:hover:scale-100"
                 style={{
                   backgroundColor:
                     isGenerating || !documentation.trim() || !mermaidLoaded
@@ -364,50 +333,26 @@ END: Process completed`}
                       : "#0077B6",
                 }}
               >
-                {isGenerating ? (
-                  <span className="flex items-center justify-center gap-3">
-                    <svg className="animate-spin h-6 w-6" viewBox="0 0 24 24">
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                        fill="none"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      />
-                    </svg>
-                    Generating Flowchart...
-                  </span>
-                ) : !mermaidLoaded ? (
-                  "⏳ Loading Diagram Engine..."
-                ) : (
-                  "🚀 Generate Flowchart"
-                )}
+                {isGenerating
+                  ? "⏳ Generating..."
+                  : !mermaidLoaded
+                  ? "⏳ Loading..."
+                  : "🚀 Generate"}
               </button>
 
               {/* Error Display */}
               {error && (
                 <motion.div
-                  className="mt-4 p-4 rounded-lg border-2"
+                  className="mt-2 p-2 rounded text-xs"
                   style={{
                     backgroundColor: "rgba(231, 76, 60, 0.1)",
-                    borderColor: "#E74C3C",
+                    borderLeft: "3px solid #E74C3C",
+                    color: "#E74C3C",
                   }}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  <p
-                    className="text-sm font-medium"
-                    style={{ color: "#E74C3C" }}
-                  >
-                    ⚠️ {error}
-                  </p>
+                  ⚠️ {error}
                 </motion.div>
               )}
             </div>
@@ -424,165 +369,36 @@ END: Process completed`}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="p-6">
+            <div className="p-4">
               <h3
-                className="text-lg font-bold mb-4 text-center"
+                className="text-xs font-bold mb-2 text-center"
                 style={{ color: "#282C35" }}
               >
                 📊 Generated Flowchart
               </h3>
 
               <div
-                className="min-h-96 flex items-center justify-center rounded-xl border-2 border-dashed"
+                className="h-64 flex items-center justify-center rounded-lg border-2 border-dashed overflow-auto"
                 style={{
                   backgroundColor: "#F8F9FA",
                   borderColor: "#EFEFEF",
                 }}
               >
                 {mermaidCode ? (
-                  <div
-                    ref={mermaidRef}
-                    className="w-full overflow-auto"
-                    style={{ minHeight: "400px" }}
-                  />
+                  <div ref={mermaidRef} className="w-full overflow-auto p-2" />
                 ) : (
-                  <div className="text-center" style={{ color: "#3a3f4b" }}>
-                    <div className="text-4xl mb-4">📊</div>
-                    <p className="text-lg font-medium">
-                      Your flowchart will appear here
-                    </p>
-                    <p className="text-sm mt-2">
-                      Enter documentation and click "Generate Flowchart"
-                    </p>
+                  <div
+                    className="text-center text-xs"
+                    style={{ color: "#3a3f4b" }}
+                  >
+                    <div className="text-2xl mb-2">📊</div>
+                    <p>Enter documentation and generate</p>
                   </div>
                 )}
               </div>
-
-              {/* Mermaid Code Display */}
-              {mermaidCode && (
-                <motion.div
-                  className="mt-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  <h4
-                    className="font-semibold mb-2"
-                    style={{ color: "#282C35" }}
-                  >
-                    Generated Mermaid Code:
-                  </h4>
-                  <pre
-                    className="p-4 rounded-lg text-xs overflow-auto max-h-40"
-                    style={{
-                      backgroundColor: "#F8F9FA",
-                      color: "#282C35",
-                      border: "1px solid #EFEFEF",
-                    }}
-                  >
-                    {mermaidCode}
-                  </pre>
-                </motion.div>
-              )}
             </div>
           </motion.div>
         </div>
-
-        {/* Features Section */}
-        <motion.div
-          className="mt-12 grid md:grid-cols-3 gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">🎯</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              100% Rule-Based
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Guaranteed accuracy through structured syntax - no AI guessing or
-              interpretation errors
-            </p>
-          </div>
-
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">⚡</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Instant Generation
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Transform documentation to visual flowcharts in seconds with
-              Mermaid.js rendering
-            </p>
-          </div>
-
-          <div
-            className="p-6 rounded-xl shadow-lg border"
-            style={{
-              backgroundColor: "#FFFFFF",
-              borderColor: "#EFEFEF",
-            }}
-          >
-            <div className="text-3xl mb-3">🔄</div>
-            <h3 className="font-bold text-lg mb-2" style={{ color: "#282C35" }}>
-              Complex Logic Support
-            </h3>
-            <p className="text-sm" style={{ color: "#3a3f4b" }}>
-              Handle decisions, loops, jumps, and complex branching with GO TO
-              statements
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Use Cases */}
-        <motion.div
-          className="mt-8 p-6 rounded-xl border"
-          style={{
-            backgroundColor: "#FFFFFF",
-            borderColor: "#0077B6",
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-        >
-          <h4 className="font-bold mb-2" style={{ color: "#0077B6" }}>
-            💡 Perfect For:
-          </h4>
-          <ul className="text-sm space-y-1" style={{ color: "#3a3f4b" }}>
-            <li>
-              • <strong>Software Development:</strong> API workflows, user
-              authentication, data processing
-            </li>
-            <li>
-              • <strong>Business Processes:</strong> Customer onboarding, order
-              fulfillment, approval workflows
-            </li>
-            <li>
-              • <strong>Documentation:</strong> Technical specs, system
-              architecture, decision trees
-            </li>
-            <li>
-              • <strong>Training Materials:</strong> Process guides,
-              troubleshooting flows, step-by-step procedures
-            </li>
-            <li>
-              • <strong>Project Planning:</strong> Task dependencies, milestone
-              tracking, resource allocation
-            </li>
-          </ul>
-        </motion.div>
 
         {/* Clear Confirmation Modal */}
         <ConfirmModal
