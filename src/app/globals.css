@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Tech Blue & Dark Slate Color Palette */
+  --tech-blue: #0077b6;
+  --tech-blue-dark: #005a8d;
+  --tech-blue-light: #00a6fb;
+  --dark-slate: #282c35;
+  --dark-slate-light: #3a3f4b;
+  --arctic-white: #ffffff;
+  --cool-gray: #efefef;
+  --cool-gray-dark: #d4d4d4;
+
+  --background: var(--arctic-white);
+  --foreground: var(--dark-slate);
 }
 
 @theme inline {
@@ -10,12 +20,24 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Custom Color Palette */
+  --color-tech-blue: var(--tech-blue);
+  --color-tech-blue-dark: var(--tech-blue-dark);
+  --color-tech-blue-light: var(--tech-blue-light);
+  --color-dark-slate: var(--dark-slate);
+  --color-dark-slate-light: var(--dark-slate-light);
+  --color-arctic-white: var(--arctic-white);
+  --color-cool-gray: var(--cool-gray);
+  --color-cool-gray-dark: var(--cool-gray-dark);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1a1d24;
+    --foreground: #f0f0f0;
+    --cool-gray: #2a2e38;
+    --cool-gray-dark: #1f2229;
   }
 }
 
