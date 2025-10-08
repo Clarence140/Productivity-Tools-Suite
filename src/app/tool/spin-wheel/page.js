@@ -71,6 +71,7 @@ export default function SpinWheelPicker() {
   // Draw the wheel whenever options or rotation changes
   useEffect(() => {
     drawWheel();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options, rotation]);
 
   const getOptionsList = () => {

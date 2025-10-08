@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { createWorker } from "tesseract.js";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import ConfirmModal from "../../components/ConfirmModal";
 
@@ -297,10 +298,13 @@ export default function ImageToTextExtractor() {
                 }}
               >
                 {imagePreview ? (
-                  <img
+                  <Image
                     src={imagePreview}
                     alt="Preview"
+                    width={500}
+                    height={500}
                     className="max-w-full max-h-full object-contain rounded"
+                    unoptimized
                   />
                 ) : (
                   <div
