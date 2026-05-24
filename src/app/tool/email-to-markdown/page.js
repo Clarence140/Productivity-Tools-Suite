@@ -115,7 +115,7 @@ Hi Team,
 Here are the requirements for the new dashboard feature:
 
 *Key Features
-1) Real-time data updat
+1) Real-time data updates
 2) User authentication
 3) Export functionality
 
