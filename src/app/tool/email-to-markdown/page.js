@@ -48,7 +48,7 @@ export default function EmailToMarkdown() {
     result = result.replace(/^--\s*$/m, "\n---\n");
     result = result.replace(
       /^Sent from my (iPhone|iPad|Android|Samsung)/gim,
-      ""
+      "",
     );
     result = result.replace(/^Get Outlook for (iOS|Android)/gim, "");
 
@@ -115,7 +115,7 @@ Hi Team,
 Here are the requirements for the new dashboard feature:
 
 *Key Features
-1) Real-time data updates
+1) Real-time data updat
 2) User authentication
 3) Export functionality
 
